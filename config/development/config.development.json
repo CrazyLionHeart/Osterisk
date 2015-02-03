@@ -1,0 +1,80 @@
+{
+  "Raven": {
+    "public": "475ae49ccd5a4edc8df4ce80cb6135f2",
+    "private": "1107ae1c79574e0790c3afe2cf58265f",
+    "host": "sentry.bbp/2"
+  },
+  "postgresql": {
+    "database": "pgsql",
+    "host": "192.168.1.214",
+    "password": "passw0rd",
+    "port": 5432,
+    "user": "pgsql"
+  },
+  "queue": {
+    "BotNet": "ControlMessage"
+  },
+  "activemq": {
+    "stomp": {
+      "host": "localhost",
+      "initialReconnectDelay": 5000,
+      "maxReconnectAttempts": -1,
+      "maxReconnectDelay": 10000,
+      "port": 61612,
+      "randomize": "false",
+      "startupMaxReconnectAttempts": -1
+    },
+    "http": {
+      "host": "192.168.1.214",
+      "port": 8161,
+      "uri": "/api/message/"
+    },
+    "password": "admin",
+    "username": "admin"
+  },
+  "asterisk": {
+    "host": "192.168.1.88",
+    "login": "login",
+    "port": 5038,
+    "secret": "passw0rd",
+    "timeoutloop": 120,
+    "timeoutping": 5,
+    "timeouttask": null
+  },
+  "loggingconfig": {
+    "disable_existing_loggers": true,
+    "formatters": {
+      "simple": {
+        "datefmt": "%y %b %d, %H:%M:%S",
+        "format": "%(levelname)s %(message)s"
+      },
+      "verbose": {
+        "datefmt": "%y %b %d, %H:%M:%S",
+        "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
+      }
+    },
+    "handlers": {
+      "console": {
+        "class": "logging.StreamHandler",
+        "formatter": "simple",
+        "level": "DEBUG"
+      },
+      "sentry": {
+        "class": "raven.handlers.logging.SentryHandler",
+        "dsn": "http://475ae49ccd5a4edc8df4ce80cb6135f2:1107ae1c79574e0790c3afe2cf58265f@sentry.bbp/2",
+        "level": "WARNING"
+      }
+    },
+    "loggers": {
+      "osterisk": {
+        "handlers": [
+          "console",
+          "sentry"
+        ],
+        "level": "WARNING",
+        "propagate": false
+      },
+    },
+    "version": 1
+  }
+}

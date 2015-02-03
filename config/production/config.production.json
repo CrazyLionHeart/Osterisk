@@ -1,0 +1,96 @@
+{
+    "Raven": {
+        "public": "dd51df2d18874e98be8247fa1cd1695d",
+        "private": "2fecf4ae0910492fa02d0e2ff40a11f7",
+        "host": "sentry.bbp/3"
+    },
+    "postgresql": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "obs",
+        "user": "postgres",
+        "password": "Zona_baby009"
+    },
+    "queue": {
+        "BotNet": "ControlMessage",
+    },
+    "activemq": {
+        "stomp": {
+            "host": "localhost",
+            "initialReconnectDelay": 5000,
+            "maxReconnectAttempts": -1,
+            "maxReconnectDelay": 10000,
+            "port": 61612,
+            "randomize": "false",
+            "startupMaxReconnectAttempts": -1
+        },
+        "http": {
+            "host": "localhost",
+            "port": 8161,
+            "uri": "/api/message/"
+        },
+        "password": "admin",
+        "username": "admin"
+    },
+    "asterisk": {
+        "host": "192.168.1.88",
+        "login": "welltone",
+        "port": 5038,
+        "secret": "welltonemanager",
+        "timeoutloop": 120,
+        "timeoutping": 5,
+        "timeouttask": null
+    },
+    "loggingconfig": {
+        "root": {
+                "handlers": [
+                    "console",
+                    "sentry"
+                ],
+                "level": "DEBUG",
+                "propagate": "True"
+        },
+        "disable_existing_loggers": "False",
+        "formatters": {
+            "simple": {
+                "datefmt": "%y %b %d, %H:%M:%S",
+                "format": "%(levelname)s %(message)s"
+            },
+            "verbose": {
+                "datefmt": "%y %b %d, %H:%M:%S",
+                "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
+            }
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "simple",
+                "level": "DEBUG"
+            },
+            "sentry": {
+                "class": "raven.handlers.logging.SentryHandler",
+                "dsn": "http://dd51df2d18874e98be8247fa1cd1695d:2fecf4ae0910492fa02d0e2ff40a11f7@sentry.bbp/3",
+                "level": "WARNING"
+            }
+        },
+        "loggers": {
+            "activemq": {
+                "handlers": [
+                    "console",
+                    "sentry"
+                ],
+                "level": "WARNING",
+                "propagate": "True"
+            },
+            "osterisk": {
+                "handlers": [
+                    "console",
+                    "sentry"
+                ],
+                "level": "WARNING",
+                "propagate": "True"
+            }
+        },
+        "version": 1
+    }
+}
